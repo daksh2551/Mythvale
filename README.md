@@ -38,3 +38,28 @@ Latest upgrade: Multi-phase Guardian Battles adds telegraphed guardian slams, ph
 
 
 Latest upgrade: Arcane Burst player magic. Press K/C or tap ⚡ to fire a ranged spell. Mana regenerates over time.
+
+
+Latest batch: Equipment & Progression panel. See `docs/equipment-progression-upgrade.md`.
+
+
+Latest upgrade: see `docs/combat-equipment-integration-upgrade.md` for purchasable sword and armor upgrades.
+
+
+Latest source upgrade: Enemy loot drops now persist per mode and both melee and magic kills use the same loot helper. See `docs/enemy-loot-persistence-upgrade.md`.
+
+
+## Latest upgrade: World Atlas
+See `docs/realm-atlas-upgrade.md` for the pause-menu atlas and verification scope.
+
+
+Latest upgrade: Guardian Bounty Rewards. Story guardians grant one-time emerald, Arcane XP, vitality, and mana rewards; claims persist in save version 3 and appear in the Quest Journal. See `docs/guardian-bounty-rewards-upgrade.md`.
+
+
+## Latest upgrade: Arcane Skill Tree
+
+Open Pause → **Arcane Skill Tree**. Arcane level-ups award skill points for Mana Efficiency, Spell Power, and Quickcast. These passive upgrades affect spell cost, projectile damage, and cooldown and are saved with each mode. See `docs/arcane-skill-tree-upgrade.md`.
+
+
+## Latest upgrade: Realm Sigil Progression
+Story guardian victories can award one unique sigil per realm. First-time sigils grant an Arcane skill point and are tracked in the Equipment screen and Story & Quest Journal.
