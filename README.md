@@ -1,23 +1,40 @@
-# Mythvale: Emerald Ruins
+# Mythvale: Emerald Ruins — Multi-Stage Progression Upgrade
 
-An original, self-contained 2D fantasy action-platformer prototype built from scratch. Swordigo was used only as a high-level gameplay reference; this project does not include Swordigo's source code, proprietary assets, binaries, or levels.
+Original fantasy side-scrolling action-platformer prototype with two connected realms: Emerald Ruins and Frostfall Keep. Adds a longer world, new enemy placements, a tougher final Dusk Warden, additional emerald collectibles, checkpoints, and persistent local progress.
 
-## Play on a phone
-1. Download and extract this ZIP.
-2. Open `game/index.html` in a modern browser (a local static web server may be needed by some file viewers for the background image).
-3. Rotate to landscape. Tap **BEGIN ADVENTURE**.
-4. Use the on-screen left/right, jump, and sword buttons.
+## Build
+- `npm install`
+- `npm run build`
 
-Desktop controls: A/D or arrow keys to move, Space/Up to jump, J or X to attack.
+Game source: `game/index.html`; `npm run build` copies it into `www/`.
+Android test build: connect the repository to Codemagic and run `mythvale-android-test-apk`.
 
-## Current playable systems
-- 4,200-unit side-scrolling level with camera follow and parallax fantasy valley art
-- Landscape-friendly responsive canvas
-- Momentum-based movement, gravity, jumping, platform collision and checkpoints
-- Sword swing, hit particles, knockback, health and damage invulnerability
-- Multiple enemy types and a final Dusk Warden with health bar
-- Animated hero/enemies, mossy ruins, layered platforms, particles, progress and vitality HUD
-- Mobile touch controls and keyboard controls
+This is a prototype; the new stage has not been device-tested yet. Progress is stored locally on the device and may be lost on uninstall.
 
-## Honest status
-This is a playable web prototype, not yet an Android APK/AAB. The current character/environment art is original procedural canvas art plus an original illustrated background, not a copied Swordigo asset pack. Next work: improve level design and combat tuning, add checkpoints/collectibles/audio/save data, then wrap with Capacitor and build an Android test APK. This ZIP has not been device-tested on the user's phone yet.
+
+## Grand Adventure expansion
+The game world is now 16,800 world units across four connected realms: Emerald Ruins, Frostfall Keep, Sunken Citadel, and Shadowfall Peak. It adds varied platform spacing and heights, spike traps, 4 realm bosses, expanded enemy patrols, and hidden emerald routes. This is original gameplay inspired by broad platform-adventure conventions, not a copy of Swordigo assets or level layouts.
+
+
+## Next gameplay upgrade
+- Eight moving platforms with smooth horizontal and vertical motion and player carry while standing on them.
+- Nine timed spike traps that cycle between active and inactive; inactive traps show a warning strip.
+- Six elevated secret ledges with distinct mint highlights to reward exploration.
+- Existing four-realm world, combat, save progress, landscape Android setup and Codemagic workflow retained.
+
+This is a source upgrade ZIP, not a tested APK. Build and device gameplay have not yet been validated.
+
+
+## Checkpoints, dash and relic update
+- Realm-gate checkpoints save the player position as you progress.
+- Dash: press Shift on keyboard or the ➤ touch button on mobile; it has a short cooldown.
+- HUD shows dash readiness. This is an incremental source upgrade; gameplay has not been device-tested.
+
+
+Latest optional quest upgrade: collect 12 Ancient Spirit Seals across the four realms; every third seal restores one vitality point.
+
+
+Latest upgrade: Multi-phase Guardian Battles adds telegraphed guardian slams, phase-dependent attack ranges and pacing, and clearer boss phase indicators.
+
+
+Latest upgrade: Arcane Burst player magic. Press K/C or tap ⚡ to fire a ranged spell. Mana regenerates over time.
