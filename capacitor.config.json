@@ -1,0 +1,10 @@
+{
+  "appId": "com.mythvale.emeraldruins",
+  "appName": "Mythvale: Emerald Ruins",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "android": {
+    "backgroundColor": "#101b2b",
+    "allowMixedContent": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mythvale-emerald-ruins",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mythvale: Emerald Ruins original fantasy platformer",
+  "scripts": {
+    "prepare:web": "node scripts/prepare-web.js",
+    "build": "npm run prepare:web",
+    "android:sync": "npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3"
+  }
+}
