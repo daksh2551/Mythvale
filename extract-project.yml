@@ -1,0 +1,86 @@
+name: Extract Blade Vale Project
+
+on:
+  push:
+    paths:
+      - "*.zip"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract Blade Vale project
+        run: |
+          python3 - <<'PY'
+          import zipfile
+          import os
+          import shutil
+
+          zips = [f for f in os.listdir('.') if f.lower().endswith('.zip')]
+
+          if not zips:
+              print("No ZIP file found.")
+              raise SystemExit(1)
+
+          zip_file = zips[0]
+          extract_dir = "/tmp/bladevale_extract"
+
+          if os.path.exists(extract_dir):
+              shutil.rmtree(extract_dir)
+
+          os.makedirs(extract_dir)
+
+          print("Extracting:", zip_file)
+
+          with zipfile.ZipFile(zip_file, 'r') as z:
+              z.extractall(extract_dir)
+
+          package_json = None
+
+          for root, dirs, files in os.walk(extract_dir):
+              if "package.json" in files:
+                  package_json = os.path.join(root, "package.json")
+                  break
+
+          if not package_json:
+              print("Could not find package.json")
+              raise SystemExit(1)
+
+          project_root = os.path.dirname(package_json)
+
+          print("Project root:", project_root)
+
+          for item in os.listdir(project_root):
+              src = os.path.join(project_root, item)
+              dst = os.path.join(os.getcwd(), item)
+
+              if item == ".git":
+                  continue
+
+              if os.path.isdir(src):
+                  if os.path.exists(dst):
+                      shutil.rmtree(dst)
+                  shutil.copytree(src, dst)
+              else:
+                  shutil.copy2(src, dst)
+
+          os.remove(zip_file)
+
+          print("Blade Vale project extracted successfully.")
+          PY
+
+      - name: Commit extracted project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add Blade Vale Android project" || echo "Nothing to commit"
+          git push
