@@ -3,23 +3,75 @@ workflows:
     name: Mythvale Android Test APK
     max_build_duration: 120
     instance_type: mac_mini_m2
+
     environment:
       node: 22.11.0
       java: 21
+
     scripts:
       - name: Install JavaScript dependencies
-        script: npm install
+        script: |
+          npm install
+
       - name: Prepare game web assets
-        script: npm run build
+        script: |
+          npm run build
+
       - name: Create Android wrapper if missing
         script: |
-          if [ ! -d android ]; then npx cap add android; fi
+          if [ ! -d android ]; then
+            npx cap add android
+          fi
           npx cap sync android
+
+      - name: Set Android orientation to landscape
+        script: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          manifest = Path("android/app/src/main/AndroidManifest.xml")
+
+          if not manifest.exists():
+              sys.exit("ERROR: AndroidManifest.xml not found")
+
+          content = manifest.read_text()
+
+          pattern = r'<activity\b[^>]*\bandroid:name="\.MainActivity"[^>]*>'
+
+          match = re.search(pattern, content)
+
+          if not match:
+              pattern = r'<activity\b[^>]*\bandroid:name="[^"]*MainActivity"[^>]*>'
+              match = re.search(pattern, content)
+
+          if not match:
+              sys.exit("ERROR: MainActivity activity tag not found")
+
+          activity = match.group(0)
+
+          activity = re.sub(
+              r'\s+android:screenOrientation="[^"]*"',
+              '',
+              activity
+          )
+
+          activity = activity[:-1] + ' android:screenOrientation="landscape">'
+
+          content = content[:match.start()] + activity + content[match.end():]
+
+          manifest.write_text(content)
+
+          print("SUCCESS: MainActivity set to landscape orientation")
+          PY
+
       - name: Build installable debug APK
         script: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
+
     artifacts:
       - android/app/build/outputs/apk/debug/*.apk
       - android/app/build/outputs/**/*.log
