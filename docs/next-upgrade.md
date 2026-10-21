@@ -1,3 +1,3 @@
-# Next development priority
+# Mythvale next upgrade
 
-After the save-recovery fix, integrate this project into the canonical GitHub source and perform one Android build plus focused gameplay tests. Avoid layering disconnected feature snapshots until the canonical project is confirmed.
+This build adds four optional elevated Realm Trial routes, twelve bonus emeralds, and a subtle magical edge on trial platforms. Existing game progress, combat, guardians, relics, seals, checkpoints, and Android build setup are retained.

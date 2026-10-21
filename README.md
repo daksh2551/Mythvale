@@ -37,29 +37,16 @@ Latest optional quest upgrade: collect 12 Ancient Spirit Seals across the four r
 Latest upgrade: Multi-phase Guardian Battles adds telegraphed guardian slams, phase-dependent attack ranges and pacing, and clearer boss phase indicators.
 
 
-Latest upgrade: Arcane Burst player magic. Press K/C or tap ⚡ to fire a ranged spell. Mana regenerates over time.
+## Private audio integration experiment (not cleared for release)
+- Added seven unchanged WAV files from the user-provided Swordigo APK to `game/assets/audio/` and `www/assets/audio/`.
+- Connected jump, sword swing, damage, falling/death, emerald pickup, and start-menu click events to those sounds. Audio is initialized after the player taps Begin Adventure for mobile browser compatibility.
+- These are reference assets from a proprietary game. Do not distribute or publish this build with them unless you have permission; replace them with original or properly licensed audio before release.
+- This integration is source-level only and has not been device-tested.
 
 
-Latest batch: Equipment & Progression panel. See `docs/equipment-progression-upgrade.md`.
+## Swordigo reference assets (private prototype only)
+Seven audio effects are connected to gameplay. The Swordigo `.POD`, `.PVR`, `.scene`, and `.fnt` files are catalogued in `docs/swordigo-asset-registry.json`, but the current 2D Canvas renderer cannot load those binary formats directly. See `docs/swordigo-asset-integration-status.md`. Do not include proprietary reference assets in public builds without permission.
 
 
-Latest upgrade: see `docs/combat-equipment-integration-upgrade.md` for purchasable sword and armor upgrades.
-
-
-Latest source upgrade: Enemy loot drops now persist per mode and both melee and magic kills use the same loot helper. See `docs/enemy-loot-persistence-upgrade.md`.
-
-
-## Latest upgrade: World Atlas
-See `docs/realm-atlas-upgrade.md` for the pause-menu atlas and verification scope.
-
-
-Latest upgrade: Guardian Bounty Rewards. Story guardians grant one-time emerald, Arcane XP, vitality, and mana rewards; claims persist in save version 3 and appear in the Quest Journal. See `docs/guardian-bounty-rewards-upgrade.md`.
-
-
-## Latest upgrade: Arcane Skill Tree
-
-Open Pause → **Arcane Skill Tree**. Arcane level-ups award skill points for Mana Efficiency, Spell Power, and Quickcast. These passive upgrades affect spell cost, projectile damage, and cooldown and are saved with each mode. See `docs/arcane-skill-tree-upgrade.md`.
-
-
-## Latest upgrade: Realm Sigil Progression
-Story guardian victories can award one unique sigil per realm. First-time sigils grant an Arcane skill point and are tracked in the Equipment screen and Story & Quest Journal.
+## Optional 3D character mode
+An experimental Three.js renderer can be enabled with the top-right `3D MODEL` button. It uses an original procedural low-poly character by default and can load a licensed glTF 2.0 binary at `game/assets/models/player.glb`. The existing 2D physics/gameplay remains the default and fallback. Details and limitations: `docs/3d-renderer-upgrade.md`.

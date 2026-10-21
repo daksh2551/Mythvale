@@ -1,0 +1,19 @@
+MYTHVALE — AUDIO ASSET INTEGRATION REPORT
+
+Changes made:
+- Copied 7 WAV assets byte-for-byte from the APK reference folder into game/assets/audio and www/assets/audio.
+- Wired sounds to menu start, jump, sword swing, player damage, falling out of the level, and emerald pickup.
+- Kept the entire original reference-only asset archive intact.
+- Updated game/index.html, www/index.html, and README.md.
+
+Files copied unchanged:
+- jump.wav
+- sword_swing1.wav
+- sword_impact1.wav
+- coin_get.wav
+- hiro_hurt.wav
+- hiro_die.wav
+- click1.wav
+
+Validation: source-level string checks only; no Android build or device gameplay test was run.
+Rights note: the WAVs originate from the proprietary Swordigo APK and must not be shipped publicly without permission. Replace with original/licensed audio before release.

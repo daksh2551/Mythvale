@@ -6,8 +6,7 @@
   "scripts": {
     "prepare:web": "node scripts/prepare-web.js",
     "build": "npm run prepare:web",
-    "android:sync": "npx cap sync android",
-    "verify": "node scripts/verify-project.js"
+    "android:sync": "npx cap sync android"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.3",
